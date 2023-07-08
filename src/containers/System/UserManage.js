@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss'
-import {getAllUsers, createNewUserService, deleteUserService} from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
 import { emitter } from "../../utils/emitter";
 
@@ -21,14 +21,15 @@ class UserManage extends Component {
     }
 
     getAllUsersFromReact = async () => {
-        let response = await getAllUsers('ALL');
+        let response = await getAllUsers();
+        console.log(response);
         if (response && response.errCode === 0) {
             this.setState({
                 arrUsers: response.users
             })
         }
     }
- 
+
     handleAddNewUser = () => {
         this.setState({
             isOpenModalUser: true,
@@ -85,9 +86,9 @@ class UserManage extends Component {
                 />
                 <div className="title text-center">Manage users</div>
                 <div className="mx-1">
-                    <button 
-                    className="btn btn-primary px-3"
-                    onClick={()=>this.handleAddNewUser()}
+                    <button
+                        className="btn btn-primary px-3"
+                        onClick={() => this.handleAddNewUser()}
                     ><i className="fas fa-plus"></i>Add new users</button>
                 </div>
                 <div className="users-table mt-3 mx-1">
@@ -112,7 +113,7 @@ class UserManage extends Component {
                                             <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
-                                    
+
                                 )
                             })
                             }
