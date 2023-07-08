@@ -2,11 +2,33 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Slider from "react-slick"
-
+import { listSpecialist } from '../../../api/listSpecialist';
 class Specialty extends Component {
- 
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        };
+    }
+    componentDidMount() {
+        // axios.get('https://project1backend-da705e13e21b.herokuapp.com/list/specialists')
+        listSpecialist()
+            .then(data => {
+                this.setState({ data });
 
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    render() {
+        const { data } = this.state;
+        {
+            data.map((item, index) => (
+                console.log(item.name)
+            ))
+        }
         return (
             <div className="section-share section-specialty">
                 <div className="section-container">
@@ -15,7 +37,13 @@ class Specialty extends Component {
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>
-                            <div className="section-customize">
+                            {data.map((item, index) => (
+                                <div className="section-customize" style={{ paddingLeft: index === 0 ? '20px' : '0' }} key={index} >
+                                    <div className="bg-image " style={{ backgroundImage: `url(${item.img})` }} />
+                                    <div>{item.name}</div>
+                                </div>
+                            ))}
+                            {/* <div className="section-customize">
                                 <div className="bg-image section-specialty" />
                                 <div>Cơ xưong khớp 1</div>
                             </div>
@@ -38,7 +66,7 @@ class Specialty extends Component {
                             <div className="section-customize">
                                 <div className="bg-image section-specialty" />
                                 <div>Cơ xưong khớp 6</div>
-                            </div>
+                            </div> */}
                         </Slider>
                     </div>
                 </div>
@@ -46,7 +74,7 @@ class Specialty extends Component {
         );
     }
 
-} 
+}
 
 const mapStateToProps = state => {
     return {
