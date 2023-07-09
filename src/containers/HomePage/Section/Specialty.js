@@ -14,7 +14,7 @@ class Specialty extends Component {
         // axios.get('https://project1backend-da705e13e21b.herokuapp.com/list/specialists')
         listSpecialist()
             .then(data => {
-                this.setState({ data });
+                this.setState({ data: data });
 
             })
             .catch(error => {
