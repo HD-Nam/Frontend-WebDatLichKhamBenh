@@ -5,6 +5,10 @@ import './UserManage.scss'
 import {getAllUsers, createNewUserService, deleteUserService} from '../../services/userService';
 import ModalUser from './ModalUser';
 import { emitter } from "../../utils/emitter";
+import { adminMenu } from '../Header/menuApp';
+import Navigator from '../../components/Navigator';
+import * as actions from "../../store/actions";
+import '../Header/Header.scss';
 
 class UserManage extends Component {
 
@@ -74,52 +78,67 @@ class UserManage extends Component {
     }
 
     render() {
+        const { processLogout } = this.props;
         let arrUsers = this.state.arrUsers;
         console.log(arrUsers)
         return (
-            <div className="users-container">
-                <ModalUser
-                    isOpen={this.state.isOpenModalUser}
-                    toggleFromParent={this.toggleUserModal}
-                    createNerUser={this.createNewuser}
-                />
-                <div className="title text-center">Manage users</div>
-                <div className="mx-1">
-                    <button 
-                    className="btn btn-primary px-3"
-                    onClick={()=>this.handleAddNewUser()}
-                    ><i className="fas fa-plus"></i>Add new users</button>
+            <React.Fragment>
+                <div className="header-container">
+                    {/* thanh navigator */}
+                    <div className="header-tabs-container">
+                        <Navigator menus={adminMenu} />
+                    </div>
+
+                    {/* nút logout */}
+                    <div className="btn btn-logout" onClick={processLogout}>
+                        <i className="fas fa-sign-out-alt"></i>
+                    </div>
                 </div>
-                <div className="users-table mt-3 mx-1">
-                    <table id="customers">
-                        <tbody>
-                            <tr>
-                                <th>Email</th>
-                                <th>First name</th>
-                                <th>Last name</th>
-                                <th>Address</th>
-                                <th>Actions</th>
-                            </tr>
-                            {arrUsers && arrUsers.map((item, index) => {
-                                return (
-                                    <tr key={index}>
-                                        <td>{item.email}</td>
-                                        <td>{item.firstName}</td>
-                                        <td>{item.lastName}</td>
-                                        <td>{item.address}</td>
-                                        <td>
-                                            <button className="btn-edit"><i className="fas fa-pencil-alt"></i></button>
-                                            <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                    
-                                )
-                            })
-                            }
-                        </tbody>
-                    </table>
+
+                <div className="users-container">
+                    <ModalUser
+                        isOpen={this.state.isOpenModalUser}
+                        toggleFromParent={this.toggleUserModal}
+                        createNerUser={this.createNewuser}
+                    />
+                    <div className="title text-center">Manage users</div>
+                    <div className="mx-1">
+                        <button 
+                        className="btn btn-primary px-3"
+                        onClick={()=>this.handleAddNewUser()}
+                        ><i className="fas fa-plus"></i>Add new users</button>
+                    </div>
+                    <div className="users-table mt-3 mx-1">
+                        <table id="customers">
+                            <tbody>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Address</th>
+                                    <th>Actions</th>
+                                </tr>
+                                {arrUsers && arrUsers.map((item, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td>{item.email}</td>
+                                            <td>{item.firstName}</td>
+                                            <td>{item.lastName}</td>
+                                            <td>{item.address}</td>
+                                            <td>
+                                                <button className="btn-edit"><i className="fas fa-pencil-alt"></i></button>
+                                                <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        
+                                    )
+                                })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 
@@ -127,11 +146,13 @@ class UserManage extends Component {
 
 const mapStateToProps = state => {
     return {
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        processLogout: () => dispatch(actions.processLogout()),
     };
 };
 
