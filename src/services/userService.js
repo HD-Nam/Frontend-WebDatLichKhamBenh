@@ -13,11 +13,7 @@ const createNewUserService = (data) => {
 }
 
 const deleteUserService = (userId) => {
-    return axios.delete('/api/delete-user', {
-        data: {
-            id: userId
-        }
-    });
+    return axios.delete(`https://project1backend-da705e13e21b.herokuapp.com/management/delete-user/${userId}`);
 }
 
 export { handleLoginApi, getAllUsers, createNewUserService, deleteUserService }
