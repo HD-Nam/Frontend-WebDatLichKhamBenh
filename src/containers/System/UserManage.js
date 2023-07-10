@@ -43,7 +43,7 @@ class UserManage extends Component {
             if (response && response.errCode !== 0) {
                 alert(response.errMessage)
             } else {
-                await this.getAllUsersFromReact();
+                await getAllUsersFromReact();
                 this.setState({
                     isOpenModalUser: false
                 })
@@ -56,7 +56,6 @@ class UserManage extends Component {
     }
 
     handleDeleteUser = async (user) => {
-        console.log(user.IDU)
         try {
             let res = await deleteUserService(user.IDU);
             if (res && res.errCode === 0) {
