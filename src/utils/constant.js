@@ -13,10 +13,17 @@ export const languages = {
     EN: 'en'
 };
 
+ 
+export const CRUD_ACTIONS = {
+    CREATE: "CREATE",
+};
+
 export const manageActions = {
     ADD: "ADD",
+
     EDIT: "EDIT",
-    DELETE: "DELETE"
+    DELETE: "DELETE",
+    READ: "READ",
 };
 
 export const dateFormat = {
