@@ -43,7 +43,7 @@ class UserManage extends Component {
             if (response && response.errCode !== 0) {
                 alert(response.errMessage)
             } else {
-                await this.getAllUsersFromReact();
+                await getAllUsersFromReact();
                 this.setState({
                     isOpenModalUser: false
                 })
