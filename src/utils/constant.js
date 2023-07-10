@@ -3,16 +3,24 @@ export const path = {
     HOMEPAGE: '/home',
     LOGIN: '/login',
     LOG_OUT: '/logout',
-    SYSTEM: '/system'
+    SYSTEM: '/system',
+    REGISTER: '/register',
+    // DETAILDOCTOR: '/detaildoctor'
 };
 
 export const languages = {
     VI: 'vi',
     EN: 'en'
 };
+
  
 export const CRUD_ACTIONS = {
     CREATE: "CREATE",
+};
+
+export const manageActions = {
+    ADD: "ADD",
+
     EDIT: "EDIT",
     DELETE: "DELETE",
     READ: "READ",

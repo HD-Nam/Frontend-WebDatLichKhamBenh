@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { emitter } from "../../utils/emitter";
 
 class ModalUser extends Component {
@@ -9,11 +9,14 @@ class ModalUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: '',
-            firstName: '',
-            lastName: '',
-            address: ''
+            name: "",
+            dob: "",
+            sex: "",
+            phoneNumber: "",
+            BHYT: "",
+            address: "",
+            username: "",
+            password: ""
         }
 
         this.listenToEmitter();
@@ -22,11 +25,14 @@ class ModalUser extends Component {
     listenToEmitter() {
         emitter.on('EVENT_CLEAR_MODAL_DATA', () => {
             this.setState({
-                email: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                address: ''
+                name: "",
+                dob: "",
+                sex: "",
+                phoneNumber: "",
+                BHYT: "",
+                address: "",
+                username: "",
+                password: ""
             })
         })
     }
@@ -39,7 +45,7 @@ class ModalUser extends Component {
     }
 
     handleOnChageInput = (event, id) => {
-        let copyState = {...this.state};
+        let copyState = { ...this.state };
         copyState[id] = event.target.value;
         this.setState({
             ...copyState
@@ -48,7 +54,7 @@ class ModalUser extends Component {
 
     checkValidateInput = () => {
         let isValid = true;
-        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address'];
+        let arrInput = ['name', 'dob', 'sex', 'phoneNumber', 'BHYT', 'address', 'username', 'password'];
         for (let i = 0; i < arrInput.length; i++) {
             if (!this.state[arrInput[i]]) {
                 isValid = false;
@@ -78,43 +84,67 @@ class ModalUser extends Component {
                 <ModalBody>
                     <div className="modal-user-body">
                         <div className="input-container">
-                            <label>Email</label>
+                            <label>name</label>
                             <input
                                 type="text"
-                                onChange={(event) => { this.handleOnChageInput(event, "email") }}
-                                value={this.state.email}
+                                onChange={(event) => { this.handleOnChageInput(event, "name") }}
+                                value={this.state.name}
                             />
                         </div>
                         <div className="input-container">
-                            <label>Password</label>
+                            <label>date of birth</label>
                             <input
-                                type="password"
-                                onChange={(event) => { this.handleOnChageInput(event, "password") }}
-                                value={this.state.password}
+                                type="date"
+                                onChange={(event) => { this.handleOnChageInput(event, "dob") }}
+                                value={this.state.dob}
                             />
                         </div>
                         <div className="input-container">
-                            <label>First name</label>
+                            <label>gender</label>
+                            <input
+                                type=""
+                                onChange={(event) => { this.handleOnChageInput(event, "sex") }}
+                                value={this.state.sex}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label>Phone Number</label>
                             <input
                                 type="text"
-                                onChange={(event) => { this.handleOnChageInput(event, "firstName") }}
-                                value={this.state.firstName}
+                                onChange={(event) => { this.handleOnChageInput(event, "phoneNumber") }}
+                                value={this.state.phoneNumber}
                             />
                         </div>
                         <div className="input-container">
-                            <label>Last name</label>
+                            <label>BHYT</label>
                             <input
                                 type="text"
-                                onChange={(event) => { this.handleOnChageInput(event, "lastName") }}
-                                value={this.state.lastName}
+                                onChange={(event) => { this.handleOnChageInput(event, "BHYT") }}
+                                value={this.state.BHYT}
                             />
                         </div>
                         <div className="input-container">
-                            <label>Address</label>
+                            <label>address</label>
                             <input
                                 type="text"
                                 onChange={(event) => { this.handleOnChageInput(event, "address") }}
                                 value={this.state.address}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label>username</label>
+                            <input
+                                type="text"
+                                onChange={(event) => { this.handleOnChageInput(event, "username") }}
+                                value={this.state.username}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label>password</label>
+                            <input
+                                type="text"
+                                onChange={(event) => { this.handleOnChageInput(event, "password") }}
+                                value={this.state.password}
                             />
                         </div>
                     </div>

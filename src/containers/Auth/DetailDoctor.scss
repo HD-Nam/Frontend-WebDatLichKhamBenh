@@ -1,0 +1,157 @@
+.doctor-detail-container {
+    overflow-y: auto;
+        height: 600px;
+        .intro-doctor{
+                display: flex;
+                padding-top: 20px;
+                margin: 0 100px;
+                padding-bottom: 10px;
+                .content-left {
+                    .bacsi {
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 50%;
+                        margin: 0px 5px;
+                    }
+                    width: 121px;
+                    border-radius: 50%;
+                    height: 121px;
+                }
+                .content-right {
+                    padding-left: 30px;
+                    width: 80%;
+                    display: flex;
+                    flex-direction: column;
+                    .Up {
+                        padding-top: 15px;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+                    .Down {
+                        padding-top: 10px;
+                    }
+                }
+        }
+        .schedule-doctor {
+            margin: 0 100px;
+            display: flex;
+            padding: 10px 0;
+            .content-left {
+                    width: 50%;
+                    select {
+                        border-bottom: 1px solid #ddd;
+                        border-top: none;
+                        border-right: none;
+                        border-left: none;
+                        cursor: pointer;
+                        padding: 10px 0;
+                        color: blue;
+                        font-weight: 600;
+                        option {
+                            cursor: pointer;
+                        }
+                    }
+                    .all-available-time {
+                        color: #333;
+                        .text-calendar {
+                            margin: 10px 0px;
+                            span {
+                                text-transform: uppercase;
+                                margin-left: 5px;
+                            }
+                        }
+                        .time-content {
+                            .a {
+                                display: flex;
+                                gap: 15px;
+                                flex-wrap: wrap;
+                                button {
+                                    padding: 5px 10px;
+                                    outline: none;
+                                    border: none;
+                                    background-color: yellow;
+                                    min-width: 120px;
+                                    border-radius: 5px;
+                                    &:hover {
+                                        background-color: #45c3d2;
+                                        color: white;
+                                    }
+                                }
+                            }
+                            .book-free {
+                                margin-top: 10px;
+                            }
+    
+                        }
+                    }
+            }
+            .content-right {
+                    width: 50%;
+                    border-left: 1px solid #ddd;
+                    margin: auto;
+                    padding-left: 20px;
+                    .doctor-extra-infor-container {
+                        .text-address {
+                            text-transform: uppercase;
+                            color: #333;
+                            font-size: 20px;
+                        }
+                        .name-clinic {
+                            padding: 5px 0;
+                            font-weight: 600;
+                            color: #333;
+                        }
+                        .detail-address {
+                            font-weight: 600;
+                            color: #333;
+    
+                        }
+                    }
+                    .content-down {
+                        padding-top: 10px;
+                    }
+            }
+        }
+        .booking {
+            .booking-modal-content {
+                .booking-modal-header {
+                    border: 1px solid red;
+                }
+            }
+        }      
+        .detail-infor-doctor {
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                background: #f9f9f9;
+                padding: 10px 100px;
+                .tt {
+                    padding-top: 15px;
+                    font-size: 17px;
+                    font-weight: 600;
+                    padding-left: 5px;
+                }
+                .a {
+                    padding-left: 10px;
+                    padding: auto;
+                    padding-top: 10px;
+                    font-size: 15px;
+                }
+                .b {
+                    padding-top: 15px;
+                    font-size: 17px;
+                    font-weight: 600;
+                    padding-left: 5px;
+                }
+                .c {
+                    padding-left: 10px;
+                    padding: auto;
+                    padding-top: 10px;
+                    font-size: 15px;
+                }
+        }
+        .comment-doctor {
+            height: 50px;
+        }
+}
+
+
