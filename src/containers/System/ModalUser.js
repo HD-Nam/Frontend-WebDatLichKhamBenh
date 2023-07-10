@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { emitter } from "../../utils/emitter";
+import register from '../../api/register';
 
 class ModalUser extends Component {
 
@@ -65,10 +66,33 @@ class ModalUser extends Component {
         return isValid;
     }
 
-    handleAddNewUser = () => {
+    handleAddNewUser = async () => {
         let isValid = this.checkValidateInput();
         if (isValid === true) {
-            this.props.createNewuser(this.state, 'abc');
+            const reqbody = {
+                name: this.state.name,
+                dob: this.state.dob,
+                sex: this.state.sex,
+                phoneNumber: this.state.phoneNumber,
+                BHYT: this.state.BHYT,
+                address: this.state.address,
+                username: this.state.username,
+                password: this.state.password
+            }
+            await register(reqbody)
+                .then(res => {
+                    if (res && res.errCode === 0) {
+                        alert('Create new user succeed');
+                        this.toggle();
+                        this.props.refreshData();
+                    } else {
+                        alert(res.errMessage);
+                    }
+                }
+                )
+                .catch(err => {
+                    console.log(err);
+                })
         }
     }
 
