@@ -67,7 +67,7 @@ class UserManage extends Component {
                 await this.getAllUsersFromReact();
             }
             else {
-                alert(res.errMessage)
+                alert(res.message)
             }
         } catch (e) {
             console.log(e);
