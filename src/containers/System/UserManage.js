@@ -14,7 +14,6 @@ import '../Header/Header.scss';
 import { getAllUsersFromReact } from '../../api/getAllUser'
 
 class UserManage extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
