@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FormattedMessage } from 'react-intl';
 import { handleLoginApi } from '../../services/userService';
 import { setTimeout } from "timers";
-import { USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAIL } from '../../store/actions/actionTypes';
 
 
 class Login extends Component {
@@ -45,13 +44,14 @@ class Login extends Component {
             let data = await handleLoginApi(this.state.username, this.state.password);
 
             if (data) {
-                if (data.data.role === "1") {
+                if (data.data.role === "1" || data.data.role === "3") {
                     console.log('user login succeeds')
                     toast.success('User login succeeded');
                     // this.props.redirectToHome();
                     setTimeout(() => {
-                        this.props.redirectToHome(); // Điều hướng về trang home sau timeout 1 giây
-                    }, 1000);
+                        this.props.redirectToHome();
+                        toast.dismiss() // Điều hướng về trang home sau timeout 1 giây
+                    }, 1200);
 
                     // this.props.userLoginSuccess(data.data)
                 }
@@ -61,7 +61,9 @@ class Login extends Component {
                     // this.props.redirectToAdmin();
                     setTimeout(() => {
                         this.props.redirectToAdmin(); // Điều hướng về trang home sau timeout 1 giây
-                    }, 1000);
+                        toast.dismiss() // Điều hướng về trang home sau timeout 1 giây
+
+                    }, 1200);
                     // this.props.adminLoginSuccess(data.data)
 
                 }
