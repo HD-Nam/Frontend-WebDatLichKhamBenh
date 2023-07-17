@@ -275,8 +275,8 @@ class UserRedux extends Component {
                                         value={gender}
                                     >
                                         <option selected>Choose...</option>
-                                        <option value="Nam">Nam</option>
-                                        <option value="Nữ">Nữ</option>
+                                        <option value="nam">Nam</option>
+                                        <option value="nữ">Nữ</option>
                                         <option value="Khác">Khác</option>
                                     </select>
                                 </div>

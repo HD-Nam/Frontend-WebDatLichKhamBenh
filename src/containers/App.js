@@ -50,7 +50,7 @@ class App extends Component {
                                     <Route path={path.REGISTER} component={(Register)} />
                                     <Route path={path.SYSTEM} component={(System)} />
                                     <Route path={path.HOMEPAGE} component={HomePage} />
-                                    {/* // <Route path={path.DETAILDOCTOR} component={DetailDoctor} /> */}
+                                    {/* <Route path={path.DETAILDOCTOR} component={DetailDoctor} /> */}
                                 </Switch>
                             </CustomScrollbars>
                         </div>

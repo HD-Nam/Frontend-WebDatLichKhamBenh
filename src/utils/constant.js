@@ -13,7 +13,7 @@ export const languages = {
     EN: 'en'
 };
 
- 
+
 export const CRUD_ACTIONS = {
     CREATE: "CREATE",
 };
