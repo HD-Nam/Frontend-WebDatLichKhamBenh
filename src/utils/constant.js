@@ -5,7 +5,7 @@ export const path = {
     LOG_OUT: '/logout',
     SYSTEM: '/system',
     REGISTER: '/register',
-    // DETAILDOCTOR: '/detaildoctor'
+    DETAILDOCTOR: '/detaildoctor'
 };
 
 export const languages = {
