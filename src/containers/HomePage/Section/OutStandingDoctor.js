@@ -27,7 +27,7 @@ class OutStandingDoctor extends Component {
         const { data } = this.state;
         {
             data.map((item, index) => (
-                console.log(item.name)
+                console.log(index, item.ho_ten)
             ))
         }
 
@@ -47,7 +47,7 @@ class OutStandingDoctor extends Component {
                                         </div>
                                         <div className="position text-center">
                                             <div>{item.ho_ten}</div>
-                                            <div>{item.IDCK}</div>
+                                            <div>{item.specialist.name}</div>
                                         </div>
                                     </div>
                                 </div>
