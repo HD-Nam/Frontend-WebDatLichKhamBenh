@@ -1,113 +1,75 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { push } from "connected-react-router";
-import * as actions from "../../store/actions";
-import './register.scss';
-import { FormattedMessage } from 'react-intl';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Register.scss';
 
+const Register = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    birthDate: '',
+    gender: '',
+    bhytNumber: '',
+    address: '',
+    username: '',
+    password: ''
+  });
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
-    render() {
-        return (
-            <div className="background-image">
-                <div className="registration-form">
-                    <h2>Đăng ký</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label>Họ và tên:</label>
-                            <input
-                                type="text"
-                                value={fullName}
-                                onChange={handleFullNameChange}
-                                placeholder="Nhập họ và tên"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Ngày sinh:</label>
-                            <input
-                                type="date"
-                                value={dateOfBirth}
-                                onChange={handleDateOfBirthChange}
-                                placeholder="Chọn ngày sinh"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Giới tính:</label>
-                            <select value={gender} onChange={handleGenderChange} required>
-                                <option value="">Chọn giới tính</option>
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                                <option value="Khác">Khác</option>
-                            </select>
-                        </div>
-                        <div className="form-group">
-                            <label>Số BHYT:</label>
-                            <input
-                                type="text"
-                                value={bhyt}
-                                onChange={handleBHYTChange}
-                                placeholder="Nhập số BHYT"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Địa chỉ:</label>
-                            <input
-                                type="text"
-                                value={address}
-                                onChange={handleAddressChange}
-                                placeholder="Nhập địa chỉ"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Tên tài khoản:</label>
-                            <input
-                                type="text"
-                                value={username}
-                                onChange={handleUsernameChange}
-                                placeholder="Nhập tên tài khoản"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Mật khẩu:</label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={handlePasswordChange}
-                                placeholder="Nhập mật khẩu"
-                                required
-                            />
-                        </div>
-                        <button type="submit" className="btn-register">
-                            Đăng ký
-                        </button>
-                    </form>
-                </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData); 
+  };
+
+  return (
+    <div className="background-image-re">
+        <div className="container-re">
+            <div className="register-re">
+                <h2>Đăng ký</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                    Họ và tên:
+                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
+                    </label>
+                    <label>
+                    Ngày sinh:
+                    <input type="date" name="birthDate" value={formData.birthDate} onChange={handleChange} />
+                    </label>
+                    <label>
+                    Giới tính:
+                    <select name="gender" value={formData.gender} onChange={handleChange}>
+                        <option value="">Chọn giới tính</option>
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
+                    </select>
+                    </label>
+                    <label>
+                    Số BHYT:
+                    <input type="text" name="bhytNumber" value={formData.bhytNumber} onChange={handleChange} />
+                    </label>
+                    <label>
+                    Địa chỉ:
+                    <input type="text" name="address" value={formData.address} onChange={handleChange} />
+                    </label>
+                    <label>
+                    Tên tài khoản:
+                    <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                    </label>
+                    <label>
+                    Mật khẩu:
+                    <input type="password" name="password" value={formData.password} onChange={handleChange} />
+                    </label>
+                    <button type="submit">Đăng ký</button> 
+                </form>
+                <Link to="/Login">Quay lại trang đăng nhập</Link>
             </div>
-        );
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        language: state.app.language
-    };
+        </div>
+    </div>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Register;

@@ -5,6 +5,7 @@ import * as actions from "../../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 import {handleLoginApi} from '../../services/userService';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props) {
@@ -55,8 +56,7 @@ class Login extends Component {
                         errMessage: error.response.data.message
                     })
                 }
-            }
-            // console.log('hoidanit', error.response)                                              
+            }                                          
         }
     }
 
@@ -95,8 +95,16 @@ class Login extends Component {
                                 ><i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i></span>
                             </div>
                         </div>
+                        {/* <div className="col-12">
+                            <span
+                            onClick={()=>this.handleRegister()}
+                            >Đăng ký</span> | <span
+                            onClick={()=>this.handleForgotPassword()}
+                            >Quên mật khẩu?</span>
+                        </div> */}
                         <div className="col-12">
-                            <span>Đăng ký</span> | <span>Quên mật khẩu?</span>
+                            <Link to="/Register">Đăng ký </Link> |
+                            <Link to="/ForgotPassword"> Quên mật khẩu?</Link>
                         </div>
                         <div className="col-12" style={{color: 'red'}}>
                             {this.state.errMessage}
