@@ -95,13 +95,6 @@ class Login extends Component {
                                 ><i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i></span>
                             </div>
                         </div>
-                        {/* <div className="col-12">
-                            <span
-                            onClick={()=>this.handleRegister()}
-                            >Đăng ký</span> | <span
-                            onClick={()=>this.handleForgotPassword()}
-                            >Quên mật khẩu?</span>
-                        </div> */}
                         <div className="col-12">
                             <Link to="/Register">Đăng ký </Link> |
                             <Link to="/ForgotPassword"> Quên mật khẩu?</Link>
