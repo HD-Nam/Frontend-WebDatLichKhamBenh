@@ -8,13 +8,20 @@ import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authenticati
 import { path } from '../utils'
 import Home from '../routes/Home';
 import Login from './Auth/Login';
+<<<<<<< HEAD
 import ForgotPassword from './Auth/ForgotPassword';
 import Register from './Auth/Register';
+=======
+import Register from './Auth/register';
+import DetailDoctor from './Auth/DetailDoctor';
+// import DetailDoctor from '../../detailDoctor';
+>>>>>>> af47ae08ad28ae4410e4e11e059b824aa75e7216
 // import Header from './Header/Header';
 import System from '../routes/System';
 import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from './HomePage/HomePage.js';
 import CustomScrollbars from "../components/CustomScrollbars";
+
 
 class App extends Component {
 
@@ -46,11 +53,19 @@ class App extends Component {
                                 <Router>
                                     <Route path={path.HOME} exact component={(Home)} />
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+<<<<<<< HEAD
                                     <Route path={path.REGISTER} component={userIsNotAuthenticated(Register)} />
                                     <Route path={path.FORGOTPASSWORD} component={userIsNotAuthenticated(ForgotPassword)} />
                                     <Route path={path.SYSTEM} component={(System)} />
                                     <Route path={path.HOMEPAGE} component={HomePage} />                                
                                 </Router>
+=======
+                                    <Route path={path.REGISTER} component={(Register)} />
+                                    <Route path={path.SYSTEM} component={(System)} />
+                                    <Route path={path.HOMEPAGE} component={HomePage} />
+                                    <Route path={path.DETAILDOCTOR} component={DetailDoctor} />
+                                </Switch>
+>>>>>>> af47ae08ad28ae4410e4e11e059b824aa75e7216
                             </CustomScrollbars>
                         </div>
 
