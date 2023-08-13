@@ -6,9 +6,14 @@ import './Login.scss';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FormattedMessage } from 'react-intl';
+<<<<<<< HEAD
+import {handleLoginApi} from '../../services/userService';
+import { Link } from 'react-router-dom';
+=======
 import { handleLoginApi } from '../../services/userService';
 import { setTimeout } from "timers";
 
+>>>>>>> af47ae08ad28ae4410e4e11e059b824aa75e7216
 
 class Login extends Component {
     constructor(props) {
@@ -76,6 +81,9 @@ class Login extends Component {
                         errMessage: 'Role of user is not correct'
                     })
                 }
+<<<<<<< HEAD
+            }                                          
+=======
 
             }
         } catch (error) {
@@ -102,6 +110,7 @@ class Login extends Component {
             //     // }
             //     console.log(error)
             // }
+>>>>>>> af47ae08ad28ae4410e4e11e059b824aa75e7216
         }
     }
 
@@ -141,7 +150,8 @@ class Login extends Component {
                             </div>
                         </div>
                         <div className="col-12">
-                            <span>Đăng ký</span> | <span>Quên mật khẩu?</span>
+                            <Link to="/Register">Đăng ký </Link> |
+                            <Link to="/ForgotPassword"> Quên mật khẩu?</Link>
                         </div>
                         <div className="col-12" style={{ color: 'red' }}>
                             {this.state.errMessage}

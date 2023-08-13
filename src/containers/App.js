@@ -8,9 +8,14 @@ import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authenticati
 import { path } from '../utils'
 import Home from '../routes/Home';
 import Login from './Auth/Login';
+<<<<<<< HEAD
+import ForgotPassword from './Auth/ForgotPassword';
+import Register from './Auth/Register';
+=======
 import Register from './Auth/register';
 import DetailDoctor from './Auth/DetailDoctor';
 // import DetailDoctor from '../../detailDoctor';
+>>>>>>> af47ae08ad28ae4410e4e11e059b824aa75e7216
 // import Header from './Header/Header';
 import System from '../routes/System';
 import { CustomToastCloseButton } from '../components/CustomToast';
@@ -45,23 +50,24 @@ class App extends Component {
                     <div className="main-container">
                         <div className="content-container">
                             <CustomScrollbars style={{ height: '100vh', width: '100%' }}>
-                                <Switch>
+                                <Router>
                                     <Route path={path.HOME} exact component={(Home)} />
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+<<<<<<< HEAD
+                                    <Route path={path.REGISTER} component={userIsNotAuthenticated(Register)} />
+                                    <Route path={path.FORGOTPASSWORD} component={userIsNotAuthenticated(ForgotPassword)} />
+                                    <Route path={path.SYSTEM} component={(System)} />
+                                    <Route path={path.HOMEPAGE} component={HomePage} />                                
+                                </Router>
+=======
                                     <Route path={path.REGISTER} component={(Register)} />
                                     <Route path={path.SYSTEM} component={(System)} />
                                     <Route path={path.HOMEPAGE} component={HomePage} />
                                     <Route path={path.DETAILDOCTOR} component={DetailDoctor} />
                                 </Switch>
+>>>>>>> af47ae08ad28ae4410e4e11e059b824aa75e7216
                             </CustomScrollbars>
                         </div>
-
-                        {/* <ToastContainer
-                            className="toast-container" toastClassName="toast-item" bodyClassName="toast-item-body"
-                            autoClose={false} hideProgressBar={true} pauseOnHover={false}
-                            pauseOnFocusLoss={true} closeOnClick={false} draggable={false}
-                            closeButton={<CustomToastCloseButton />}
-                        /> */}
 
                         <ToastContainer
                             position="bottom-right"
