@@ -21,11 +21,10 @@
         height: 350px;
 
         .text-login {
+            text-align: center;
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
-            padding-top: 10px;
-            align-items: center;
           }
           
         .login-input {
@@ -69,20 +68,14 @@
         }
           
         .btn-login {
-            border-radius: 15px;
-            outline: none;
-            border: none;
-            text-align: center;
             width: 100%;
             display: inline-block;
             padding: 10px 20px;
             background-color: green;
             color: #fff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-
-            &:hover {
-                background-color: #0056b3;
-            }
         }
     }
 }
