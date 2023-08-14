@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
+import { Link } from 'react-router-dom';
 
 class HomeHeader extends Component {
 
@@ -24,8 +25,8 @@ class HomeHeader extends Component {
                         </div> 
                         <div className="right-content">
                             <div className="support"><i className="fas fa-question-circle"></i>Help</div>
-                            <div className="logout">
-                                <span>Đăng xuất</span> 
+                            <div className="logout"> 
+                                <Link to="/Login">Đăng xuất</Link>
                             </div>
                         </div>
                     </div>

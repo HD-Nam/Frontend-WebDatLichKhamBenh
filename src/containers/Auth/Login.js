@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FormattedMessage } from 'react-intl';
 import { handleLoginApi } from '../../services/userService';
 import { setTimeout } from "timers";
-
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props) {
@@ -141,7 +141,8 @@ class Login extends Component {
                             </div>
                         </div>
                         <div className="col-12">
-                            <span>Đăng ký</span> | <span>Quên mật khẩu?</span>
+                            <Link to="/Register">Đăng ký</Link> | 
+                            <Link to="/ForgotPassword"> Quên mật khẩu</Link>
                         </div>
                         <div className="col-12" style={{ color: 'red' }}>
                             {this.state.errMessage}
