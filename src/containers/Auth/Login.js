@@ -51,7 +51,7 @@ class Login extends Component {
                     setTimeout(() => {
                         this.props.redirectToHome();
                         toast.dismiss() // Điều hướng về trang home sau timeout 1 giây
-                    }, 1200);
+                    }, 2000);
 
                     // this.props.userLoginSuccess(data.data)
                 }
@@ -63,7 +63,7 @@ class Login extends Component {
                         this.props.redirectToAdmin(); // Điều hướng về trang home sau timeout 1 giây
                         toast.dismiss() // Điều hướng về trang home sau timeout 1 giây
 
-                    }, 1200);
+                    }, 2000);
                     // this.props.adminLoginSuccess(data.data)
 
                 }
@@ -141,7 +141,7 @@ class Login extends Component {
                             </div>
                         </div>
                         <div className="col-12">
-                            <Link to="/Register">Đăng ký</Link> | 
+                            <Link to="/Register">Đăng ký</Link> |
                             <Link to="/ForgotPassword"> Quên mật khẩu</Link>
                         </div>
                         <div className="col-12" style={{ color: 'red' }}>
