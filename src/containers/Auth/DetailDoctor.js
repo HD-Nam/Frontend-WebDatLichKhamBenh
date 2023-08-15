@@ -11,9 +11,12 @@ import { withRouter } from 'react-router'
 import moment from 'moment/moment';
 import localization from 'moment/locale/vi'
 import { FormattedMessage } from 'react-intl';
-import BookingModal from './Modal/BookingModal';
+
 // import { userService } from '../../services/userService';import Select from 'react-select'
 // import HomeHeader from '../HomePage/HomeHeader';
+
+
+// import BookingModal from './Modal/BookingModal';
 class DetailDoctor extends Component {
     constructor(props) {
         super(props);
@@ -222,11 +225,11 @@ class DetailDoctor extends Component {
 
                     </div>
                 </div>
-                <BookingModal
+                {/* <BookingModal
                     isOpenModal={isOpenModalBooking}
                     closeBookingModal={this.closeBookingModal}
                     datatime={datasheduletimemodal}>
-                </BookingModal>
+                </BookingModal> */}
             </div>
         );
     }
