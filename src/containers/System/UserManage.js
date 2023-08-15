@@ -25,10 +25,21 @@ class UserManage extends Component {
     async componentDidMount() {
         const users = await getAllUsersFromReact();
         this.setState({ arrUsers: users })
+        console.log(this.state.arrUsers);
+
 
     }
 
-
+    updateUserList = async () => {
+        try {
+            // this.setState({ arrUsers: [] });
+            console.log(this.state.arrUsers);
+            const users = await getAllUsersFromReact();
+            this.setState({ arrUsers: users });
+        } catch (error) {
+            console.log("Error fetching users:", error);
+        }
+    }
 
     handleAddNewUser = () => {
         this.setState({
@@ -45,10 +56,20 @@ class UserManage extends Component {
     createNewuser = async (data) => {
         try {
             let response = await createNewUserService(data);
-            if (response && response.errCode !== 0) {
-                alert(response.errMessage)
+            console.log(response.message);
+            if (response) {
+                this.updateUserList();
+                console.log(this.state.arrUsers);
+
+                alert('Create new user sucessfully!')
+
+
             } else {
-                await getAllUsersFromReact();
+                alert('Create new user fail!')
+
+                console.log(this.state.arrUsers);
+
+                alert(response.message)
                 this.setState({
                     isOpenModalUser: false
                 })
@@ -63,8 +84,13 @@ class UserManage extends Component {
     handleDeleteUser = async (user) => {
         try {
             let res = await deleteUserService(user.IDU);
-            if (res && res.errCode === 0) {
-                await this.getAllUsersFromReact();
+
+            if (res) {
+                alert('Delete user sucessfully!')
+                console.log(res.message);
+
+                this.updateUserList();
+                console.log(this.state.arrUsers);
             }
             else {
                 alert(res.message)
@@ -77,7 +103,7 @@ class UserManage extends Component {
     render() {
         const { processLogout } = this.props;
         let arrUsers = this.state.arrUsers;
-        console.log(arrUsers)
+        // console.log(arrUsers)
         return (
             <React.Fragment>
                 <div className="header-container">
