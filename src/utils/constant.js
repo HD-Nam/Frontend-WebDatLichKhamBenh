@@ -5,7 +5,9 @@ export const path = {
     LOG_OUT: '/logout',
     SYSTEM: '/system',
     REGISTER: '/register',
-    // DETAILDOCTOR: '/detaildoctor'
+    DETAILDOCTOR: '/Detail-Doctor',
+    DETAILSPECIALTY: '/Detail-Specialty',
+    LISTDOCTOR: '/list-doctor'
 };
 
 export const languages = {
@@ -13,7 +15,7 @@ export const languages = {
     EN: 'en'
 };
 
- 
+
 export const CRUD_ACTIONS = {
     CREATE: "CREATE",
 };
