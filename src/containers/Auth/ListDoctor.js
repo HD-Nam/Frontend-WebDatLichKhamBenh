@@ -11,6 +11,8 @@ import localization from 'moment/locale/vi'
 import { FormattedMessage } from 'react-intl';
 // import { userService } from '../../services/userService';import Select from 'react-select'
 import { getAllDoctor } from '../../api/getAllDoctor';
+import { Link } from 'react-router-dom';
+
 
 class ListDoctor extends Component {
     constructor(props) {
@@ -85,15 +87,17 @@ class ListDoctor extends Component {
                 <div className="home-header-container">
                     <div className="home-header-content">
                         <div className="left-content">
-                            <div className="logo"><i className="far fa-hospital"></i>    BỆNH VIỆN A</div>
+                            <div className="logo"><i className="far fa-hospital"></i>  <Link to="/" style={{ color: "black", textDecoration: "none" }}>BỆNH VIỆN A</Link>
+
+                            </div>
                         </div>
                         <div className="center-content">
                             <div className="child-content">
-                                <div><b>Chuyên khoa</b></div>
+                                <Link to="/Detail-Specialty"><b style={{ color: "black", textDecoration: "none" }}>Chuyên khoa</b></Link>
                                 <div className="subs-title">Tìm các bác sĩ theo từng chuyên khoa</div>
                             </div>
                             <div className="child-content">
-                                <div><b>Bác sĩ</b></div>
+                                <Link to="/list-doctor"><b style={{ color: "black", textDecoration: "none" }}>Bác sĩ</b></Link>
                                 <div className="subs-title">Tìm các bác sĩ giỏi</div>
                             </div>
                         </div>
