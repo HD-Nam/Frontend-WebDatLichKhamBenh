@@ -16,7 +16,7 @@ import { FormattedMessage } from 'react-intl';
 // import HomeHeader from '../HomePage/HomeHeader';
 
 
-// import BookingModal from './Modal/BookingModal';
+import BookingModal from './Modal/BookingModal';
 class DetailDoctor extends Component {
     constructor(props) {
         super(props);
@@ -225,11 +225,11 @@ class DetailDoctor extends Component {
 
                     </div>
                 </div>
-                {/* <BookingModal
+                <BookingModal
                     isOpenModal={isOpenModalBooking}
                     closeBookingModal={this.closeBookingModal}
                     datatime={datasheduletimemodal}>
-                </BookingModal> */}
+                </BookingModal>
             </div>
         );
     }
