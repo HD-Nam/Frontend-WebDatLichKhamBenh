@@ -125,7 +125,8 @@ class ListDoctor extends Component {
                                 </div>
                                 <div className="content-right">
                                     <div className="Up">
-                                        {item.ho_ten}
+                                        {/* {item.ho_ten} */}
+                                        <Link to={`/detail-doctor/${item.IDU}`} style={{ color: "black", textDecoration: "none" }}>{item.ho_ten}</Link>
                                     </div>
                                     <div className="Down">Nguyên Trưởng phòng chỉ đạo tuyến tại Bệnh viện Da liễu Trung ương Bác sĩ từng công tác tại Bệnh viện Da liễu Trung ương Nguyên Tổng Thư ký Hiệp hội Da liễu Việt Nam</div>
                                 </div>

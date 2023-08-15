@@ -1,19 +1,20 @@
 
-// import HomeHeader from '../Header/Header';
+
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import './DetailDoctor.scss';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import * as actions from "../../store/actions";
+
 import { withRouter } from 'react-router'
 import moment from 'moment/moment';
 import localization from 'moment/locale/vi'
 import { FormattedMessage } from 'react-intl';
 
-// import { userService } from '../../services/userService';import Select from 'react-select'
-// import HomeHeader from '../HomePage/HomeHeader';
+import { getDetaildoctor } from '../../api/getDetailDoctor';
+
+
 
 
 import BookingModal from './Modal/BookingModal';
@@ -21,13 +22,21 @@ class DetailDoctor extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            doctorId: '',
+            data: {},
+            specialist: {},
             alldays: [],
             allAvailableTime: [],
             isOpenModalBooking: false,
-            datasheduletimemodal: {}
+            datasheduletimemodal: {},
+
         }
     }
     async componentDidMount() {
+        const { match } = this.props;
+        const { id } = match.params; // Lấy id từ URL
+        this.setState({ doctorId: id });
+
         let { language } = this.props;
         console.log('moment vie: ', moment(new Date()).format('dddd - DD/MM'));
         console.log('moment en: ', moment(new Date()).locale('en').format("ddd - DD/MM"));
@@ -41,12 +50,26 @@ class DetailDoctor extends Component {
         this.setState({
             alldays: alldays,
         })
+        getDetaildoctor(id)
+            .then(data => {
+                this.setState({ data: data });
+                this.setState({ specialist: data.specialist });
+                // console.log('data: ', data);
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
     }
+
     returnToHome = () => {
         if (this.props.history) {
             this.props.history.push('/home')
         }
     }
+
+
     handleOnChangeSelect = (event) => {
         // if (this.props.match && this.props.match.params && this.props.match.params.id) {
         //     let doctorId = this.props.match.params.id;
@@ -69,8 +92,18 @@ class DetailDoctor extends Component {
 
 
     render() {
+        // this.doctorInfor();
+        // console.log('props: ', this.props);
+        // console.log('kiem tra state', this.state);
         let { alldays, allAvailableTime, isOpenModalBooking, datasheduletimemodal } = this.state;
         let { language } = this.props;
+        const { data } = this.state;
+        // console.log('data: ', data);
+
+        const { specialist } = this.state;
+        // console.log('specialist', specialist);
+
+
         return (
             <div className="WEB">
                 <div className="header">
@@ -108,7 +141,8 @@ class DetailDoctor extends Component {
                         </div>
                         <div className="content-right">
                             <div className="Up">
-                                Phó Giáo Sư Nguyễn Văn A
+                                {data.ho_ten}
+                                {/* Phó Giáo Sư Nguyễn Văn A */}
                             </div>
                             <div className="Down">Nguyên Trưởng phòng chỉ đạo tuyến tại Bệnh viện Da liễu Trung ương Bác sĩ từng công tác tại Bệnh viện Da liễu Trung ương Nguyên Tổng Thư ký Hiệp hội Da liễu Việt Nam</div>
                         </div>
@@ -157,8 +191,8 @@ class DetailDoctor extends Component {
                             <div className="doctor-extra-infor-container">
                                 <div className="content-up">
                                     <div className="text-address">ĐỊA CHỈ PHÒNG KHÁM</div>
-                                    <div className="name-clinic"> Phòng Khám Chuyên Khoa Da liễu</div>
-                                    <div className="detail-address">abc - xyz - Hà Nội</div>
+                                    <div className="name-clinic">{specialist.name} </div>
+                                    <div className="detail-address"> {data.work_room} - {specialist.address}</div>
                                 </div>
                                 <div className="content-down">
                                     <div>GIÁ KHÁM: 250.000 VNĐ</div>
