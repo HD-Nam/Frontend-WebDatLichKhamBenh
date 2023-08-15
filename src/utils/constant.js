@@ -8,11 +8,11 @@ export const path = {
 
     DETAILDOCTOR: '/Detail-Doctor',
     DETAILSPECIALTY: '/Detail-Specialty',
-    LISTDOCTOR: '/list-doctor'
+    LISTDOCTOR: '/list-doctor',
 
     FORGOTPASSWORD: '/forgotpassword',
     HOMEHEADER: '/homeheader',
-    
+
 
 };
 

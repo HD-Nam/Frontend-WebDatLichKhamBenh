@@ -131,12 +131,12 @@ class ListDoctor extends Component {
                                             <button>6:00 - 7:00</button>
                                             <button>7:00 - 8:00</button>
                                             <button>8:00 - 9:00</button>
-                                            {/* <button>9:00 - 10:00</button>
-                                        <button>10:00 - 11:00</button>
-                                        <button>11:00 - 12:00</button>
-                                        <button>12:00 - 13:00</button>
-                                        <button>13:00 - 14:00</button>
-                                        <button>14:00 - 15:00</button> */}
+                                            <button>9:00 - 10:00</button>
+                                            <button>10:00 - 11:00</button>
+                                            <button>11:00 - 12:00</button>
+                                            <button>12:00 - 13:00</button>
+                                            <button>13:00 - 14:00</button>
+                                            <button>14:00 - 15:00</button>
                                         </div>
                                         {/* {allAvailableTime && allAvailableTime.length > 0 &&
                                         allAvailableTime.map((item, index) => {
