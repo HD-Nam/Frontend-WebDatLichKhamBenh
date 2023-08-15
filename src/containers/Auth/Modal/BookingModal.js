@@ -94,31 +94,31 @@ class BookingModal extends Component {
                                 <label>Họ Tên</label>
                                 <input className="from-control"
                                     value={this.state.fullName}
-                                    onChange={(event) => this.this.handleOnChangeInput(event, 'fullName')} />
+                                    onChange={(event) => this.handleOnChangeInput(event, 'fullName')} />
                             </div>
                             <div className="col-6 input-container">
                                 <label>Số điện thoai</label>
                                 <input className="from-control"
                                     value={this.state.phonenumber}
-                                    onChange={(event) => this.this.handleOnChangeInput(event, 'phonenumber')} />
+                                    onChange={(event) => this.handleOnChangeInput(event, 'phonenumber')} />
                             </div>
                             <div className="col-6 input-container">
                                 <label>Địa chỉ email</label>
                                 <input className="from-control"
                                     value={this.state.email}
-                                    onChange={(event) => this.this.handleOnChangeInput(event, 'email')} />
+                                    onChange={(event) => this.handleOnChangeInput(event, 'email')} />
                             </div>
                             <div className="col-6 input-container">
                                 <label>Địa chỉ liên hệ</label>
                                 <input className="from-control"
                                     value={this.state.address}
-                                    onChange={(event) => this.this.handleOnChangeInput(event, 'address')} />
+                                    onChange={(event) => this.handleOnChangeInput(event, 'address')} />
                             </div>
                             <div className="col-12 input-container">
                                 <label>Lý do khám</label>
                                 <input className="from-control"
                                     value={this.state.reason}
-                                    onChange={(event) => this.this.handleOnChangeInput(event, 'reason')} />
+                                    onChange={(event) => this.handleOnChangeInput(event, 'reason')} />
                             </div>
                             <div className="col-6 input-container">
                                 <label>Ngày sinh</label>
@@ -142,8 +142,8 @@ class BookingModal extends Component {
                         <button className="xacnhan" onClick={closeBookingModal}>Xác Nhận </button>
                         <button className="cancel" onClick={closeBookingModal}>Cancel</button>
                     </ModalFooter>
-                </div >
-            </Modal >
+                </div>
+            </Modal>
         );
     }
 
