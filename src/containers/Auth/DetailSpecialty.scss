@@ -1,0 +1,231 @@
+.detail-specialty-doctor {
+    padding-top: 10px;
+    border-bottom: 1px solid #ddd;
+    overflow-y: auto;
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    .content-right {
+        width: 50%;
+        .schedule-doctor {
+            margin: 0 100px;
+            // padding: 10px 0;
+            .content-left1 {
+                select {
+                        border-top: none;
+                        border-right: none;
+                        border-left: none;
+                        cursor: pointer;
+                        padding: 10px 0;
+                        color: blue;
+                        font-weight: 600;
+                        option {
+                            cursor: pointer;
+                        }
+                    }
+                    .all-available-time {
+                        color: #333;
+                        .text-calendar {
+                            margin: 10px 0px;
+                            span {
+                                text-transform: uppercase;
+                                margin-left: 5px;
+                            }
+                        }
+                        .time-content {
+                            .a {
+                                display: flex;
+                                gap: 15px;
+                                flex-wrap: wrap;
+                                button {
+                                    padding: 5px 10px;
+                                    outline: none;
+                                    border: none;
+                                    background-color: yellow;
+                                    min-width: 120px;
+                                    border-radius: 5px;
+                                    &:hover {
+                                        background-color: #45c3d2;
+                                        color: white;
+                                    }
+                                }
+                            }
+                            .book-free {
+                                margin-top: 10px;
+                            }
+        
+                        }
+                    }
+                    .doctor-extra-infor-container {
+                        .text-address {
+                            text-transform: uppercase;
+                            color: #333;
+                            font-size: 20px;
+                        }
+                        .name-clinic {
+                            padding: 5px 0;
+                            font-weight: 600;
+                            color: #333;
+                        }
+                        .detail-address {
+                            font-weight: 600;
+                            color: #333;
+        
+                        }
+                    }
+                    .content-down {
+                        padding-top: 10px;
+                    }
+            }
+        }
+    }
+    .content-left {
+        border-right: 1px solid #ddd ;
+        width: 50%;
+        .intro-doctor{
+            display: flex;
+            padding-top: 20px;
+            margin: 0 100px;
+            padding-bottom: 10px;
+            .content-left {
+                .bacsi {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                    margin: 0px 5px;
+                }
+                width: 121px;
+                border-radius: 50%;
+                height: 121px;
+            }
+            .content-right {
+                padding-left: 30px;
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                .Up {
+                    padding-top: 15px;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+                .Down {
+                    padding-top: 10px;
+                }
+            }
+        }
+    }
+}
+.comment {
+        height: 50px;
+}
+.home-header-container {
+    margin-bottom: 20px;
+    height: 60px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10000;
+    border-bottom: 1px solid #ddd;
+    .home-header-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+        .left-content {
+            width: 35%;
+            display: flex;
+            text-align: center;
+            font-size: 32px;
+            text-shadow: 1px 1px 1px #333;
+            color: black;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #82CD47;
+
+            .logo {
+                cursor: pointer;
+            }
+        }
+        .center-content {
+            width: 45%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .child-content {
+                font-size: 18px;
+
+                b {
+                    cursor: pointer;
+                }
+
+                .subs-title {
+                    font-weight: 400px;
+                    font-size: 14px;
+                }
+            }
+    
+        }
+        .right-content {
+            width: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .support {
+                cursor: pointer;
+                padding-right: 70px;
+                padding-left: 40px;
+                display: flex;
+                align-items: center;
+
+                i {
+                    font-size: 15px;
+                    margin-right: 5px;
+                }
+            }
+
+            .logout {
+                span {
+                    text-decoration: none;
+                    text-decoration: underline;
+                    padding-right: 30px;
+                    cursor: pointer;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+.subs-title {
+    font-weight: 400px;
+    font-size: 14px;            
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.search {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 25px;
+    background: #82CD47;
+    i {
+        margin: 0 5px;
+    }
+    input {
+        height: 30px;
+        width: 380px;
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+}

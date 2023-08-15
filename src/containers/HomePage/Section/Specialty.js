@@ -43,30 +43,7 @@ class Specialty extends Component {
                                     <div>{item.name}</div>
                                 </div>
                             ))}
-                            {/* <div className="section-customize">
-                                <div className="bg-image section-specialty" />
-                                <div>Cơ xưong khớp 1</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-image section-specialty" />
-                                <div>Cơ xưong khớp 2</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-image section-specialty" />
-                                <div>Cơ xưong khớp 3</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-image section-specialty" />
-                                <div>Cơ xưong khớp 4</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-image section-specialty" />
-                                <div>Cơ xưong khớp 5</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-image section-specialty" />
-                                <div>Cơ xưong khớp 6</div>
-                            </div> */}
+
                         </Slider>
                     </div>
                 </div>
