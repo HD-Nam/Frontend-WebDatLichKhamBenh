@@ -6,7 +6,7 @@ export const path = {
     SYSTEM: '/system',
     REGISTER: '/register',
 
-    DETAILDOCTOR: '/Detail-Doctor',
+    DETAILDOCTOR: '/detail-doctor/:id',
     DETAILSPECIALTY: '/Detail-Specialty',
     LISTDOCTOR: '/list-doctor',
 
