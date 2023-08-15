@@ -5,9 +5,15 @@ export const path = {
     LOG_OUT: '/logout',
     SYSTEM: '/system',
     REGISTER: '/register',
+
+    DETAILDOCTOR: '/Detail-Doctor',
+    DETAILSPECIALTY: '/Detail-Specialty',
+    LISTDOCTOR: '/list-doctor'
+
     FORGOTPASSWORD: '/forgotpassword',
     HOMEHEADER: '/homeheader',
-    DETAILDOCTOR: '/detaildoctor'
+    
+
 };
 
 export const languages = {

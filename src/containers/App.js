@@ -8,17 +8,20 @@ import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authenticati
 import { path } from '../utils'
 import Home from '../routes/Home';
 import Login from './Auth/Login';
+
 import Register from './Auth/Register';
 import ForgotPassword from './Auth/ForgotPassword';
 import HomeHeader from './HomePage/HomeHeader';
 import DetailDoctor from './Auth/DetailDoctor';
 // import DetailDoctor from '../../detailDoctor';
+
 // import Header from './Header/Header';
 import System from '../routes/System';
 import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from './HomePage/HomePage.js';
 import CustomScrollbars from "../components/CustomScrollbars";
-
+import DetailSpecialty from './Auth/DetailSpecialty';
+import ListDoctor from './Auth/ListDoctor';
 
 class App extends Component {
 
@@ -56,6 +59,10 @@ class App extends Component {
                                     <Route path={path.SYSTEM} component={(System)} />
                                     <Route path={path.HOMEPAGE} component={HomePage} />
                                     <Route path={path.DETAILDOCTOR} component={DetailDoctor} />
+
+                                    <Route path={path.DETAILSPECIALTY} component={DetailSpecialty} />
+                                    <Route path={path.LISTDOCTOR} component={ListDoctor} />
+
                                 </Switch>
                             </CustomScrollbars>
                         </div>
