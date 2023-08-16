@@ -11,21 +11,27 @@ class HomeHeader extends Component {
                 <div className="home-header-container">
                     <div className="home-header-content">
                         <div className="left-content">
-                            <div className="logo"><i className="far fa-hospital"></i>    BỆNH VIỆN A</div>
+                            <div className="logo"><i className="far fa-hospital"></i>  <Link to="/" style={{ color: "black", textDecoration: "none" }}>BỆNH VIỆN A</Link>
+
+                            </div>
                         </div>
                         <div className="center-content">
-                            <div className="child-content"> 
-                                <div><b>Chuyên khoa</b></div>
+                            <div className="child-content">
+                                <div>
+                                    <Link to="/Detail-Specialty"><b style={{ color: "black", textDecoration: "none" }}>Chuyên khoa</b></Link>
+
+                                </div>
                                 <div className="subs-title">Tìm các bác sĩ theo từng chuyên khoa</div>
                             </div>
                             <div className="child-content">
-                                <div><b>Bác sĩ</b></div>
+                                <Link to="/list-doctor"><b style={{ color: "black", textDecoration: "none" }}>Bác sĩ</b></Link>
+
                                 <div className="subs-title">Tìm các bác sĩ giỏi</div>
                             </div>
-                        </div> 
+                        </div>
                         <div className="right-content">
                             <div className="support"><i className="fas fa-question-circle"></i>Help</div>
-                            <div className="logout"> 
+                            <div className="logout">
                                 <Link to="/Login">Đăng xuất</Link>
                             </div>
                         </div>
@@ -61,7 +67,7 @@ class HomeHeader extends Component {
         );
     }
 
-} 
+}
 
 const mapStateToProps = state => {
     return {

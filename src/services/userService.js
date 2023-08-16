@@ -15,9 +15,6 @@ const createNewUserService = (data) => {
 
 
 const deleteUserService = async (userId) => {
-    console.log(`https://project1backend-da705e13e21b.herokuapp.com/management/delete-user/${userId}`);
-    console.log(`https://project1backend-da705e13e21b.herokuapp.com/management/delete-user/${userId}`);
-
     return await axios.delete(`https://project1backend-da705e13e21b.herokuapp.com/management/delete-user/${userId}`);
 
 }
