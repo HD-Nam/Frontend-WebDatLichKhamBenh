@@ -6,8 +6,8 @@ import { history } from '../redux'
 import { ToastContainer } from 'react-toastify';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
 import { path } from '../utils'
-import Home from '../routes/Home';
 import Login from './Auth/Login';
+import Home from '../routes/Home';
 import Register from './Auth/Register';
 import ForgotPassword from './Auth/ForgotPassword';
 import HomeHeader from './HomePage/HomeHeader';
@@ -48,8 +48,8 @@ class App extends Component {
                         <div className="content-container">
                             <CustomScrollbars style={{ height: '100vh', width: '100%' }}>
                                 <Switch>
-                                    <Route path={path.HOME} exact component={(Home)} />
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+                                    <Route path={path.HOME} exact component={(Home)} />
                                     <Route path={path.REGISTER} component={userIsNotAuthenticated(Register)} />
                                     <Route path={path.FORGOTPASSWORD} component={userIsNotAuthenticated(ForgotPassword)} />
                                     <Route path={path.HOMEHEADER} component={userIsNotAuthenticated(HomeHeader)} />
