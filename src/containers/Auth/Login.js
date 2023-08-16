@@ -42,8 +42,17 @@ class Login extends Component {
 
         try {
             let data = await handleLoginApi(this.state.username, this.state.password);
-
+            console.log('data', data);
             if (data) {
+                const userId = data.data.IDU;
+                const token = data.data.accessToken;
+                const expirationDays = 7;
+                const expirationDate = new Date();
+                console.log(userId);
+                expirationDate.setDate(expirationDate.getDate() + expirationDays);
+                document.cookie = `userId=${userId}; expires=${expirationDate.toUTCString()}; path=/`;
+                document.cookie = `token=${token}; expires=${expirationDate.toUTCString()}; path=/`;
+
                 if (data.data.role === "1" || data.data.role === "3") {
                     console.log('user login succeeds')
                     toast.success('User login succeeded');

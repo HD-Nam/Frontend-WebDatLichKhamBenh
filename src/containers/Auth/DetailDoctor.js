@@ -29,6 +29,8 @@ class DetailDoctor extends Component {
             allAvailableTime: [],
             isOpenModalBooking: false,
             datasheduletimemodal: {},
+            date: '',
+            time: '',
 
         }
     }
