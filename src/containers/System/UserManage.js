@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss'
-import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
+import ModalEditUser from './ModalEditUser';
 import { emitter } from "../../utils/emitter";
 
 import { adminMenu } from '../Header/menuApp';
@@ -19,6 +20,8 @@ class UserManage extends Component {
         this.state = {
             arrUsers: [],
             isOpenModalUser: false,
+            isOpenModalEditUser: false,
+            userEdit: {}
         }
     }
 
@@ -30,6 +33,8 @@ class UserManage extends Component {
 
     }
 
+<<<<<<< HEAD
+=======
     updateUserList = async () => {
         try {
             // this.setState({ arrUsers: [] });
@@ -41,6 +46,7 @@ class UserManage extends Component {
         }
     }
 
+>>>>>>> 834eeda42346b6a8f44ff3bba3e5ae65657bb71c
     handleAddNewUser = () => {
         this.setState({
             isOpenModalUser: true,
@@ -50,6 +56,12 @@ class UserManage extends Component {
     toggleUserModal = () => {
         this.setState({
             isOpenModalUser: !this.state.isOpenModalUser,
+        })
+    }
+
+    toggleUserEditModal = () => {
+        this.setState({
+            isOpenModalEditUser: !this.state.isOpenModalEditUser,
         })
     }
 
@@ -77,6 +89,30 @@ class UserManage extends Component {
                 emitter.emit('EVENT_CLEAR_MODAL_DATA')
             }
         } catch (e) {
+            console.log(e)
+        }
+    }
+
+    handleEditUser = (user) => {
+        console.log('check edit user ', user);
+        this.setState({
+            isOpenModalEditUser: true,
+            userEdit: user
+        })
+    }
+
+    doEditUser = async (user) => {
+        try {
+            let res = await editUserService(user);
+            if (res && res.errCode === 0) {
+                this.setState({
+                    isOpenModalEditUser: false
+                })
+                await this.getAllUsersFromReact()
+            }else {
+                alert(res.errCode)
+            }
+        } catch(e) {
             console.log(e)
         }
     }
@@ -121,8 +157,17 @@ class UserManage extends Component {
                     <ModalUser
                         isOpen={this.state.isOpenModalUser}
                         toggleFromParent={this.toggleUserModal}
-                        createNerUser={this.createNewuser}
+                        createNewUser={this.createNewuser}
                     />
+                    {
+                        this.state.isOpenModalEditUser &&
+                        <ModalEditUser
+                            isOpen={this.state.isOpenModalEditUser}
+                            toggleFromParent={this.toggleUserEditModal}
+                            currentUser={this.state.userEdit}
+                            editUser={this.doEditUser}
+                        />
+                    }
                     <div className="title text-center">Manage users</div>
                     <div className="mx-1">
                         <button
@@ -160,7 +205,7 @@ class UserManage extends Component {
                                             <td>{item.IDCK}</td>
                                             <td>{item.username}</td>
                                             <td>
-                                                <button className="btn-edit"><i className="fas fa-pencil-alt"></i></button>
+                                                <button className="btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-pencil-alt"></i></button>
                                                 <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

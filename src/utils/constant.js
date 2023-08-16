@@ -1,7 +1,7 @@
 export const path = {
+    LOGIN: '/login',
     HOME: '/',
     HOMEPAGE: '/home',
-    LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system',
     REGISTER: '/register',
@@ -28,7 +28,6 @@ export const CRUD_ACTIONS = {
 
 export const manageActions = {
     ADD: "ADD",
-
     EDIT: "EDIT",
     DELETE: "DELETE",
     READ: "READ",
