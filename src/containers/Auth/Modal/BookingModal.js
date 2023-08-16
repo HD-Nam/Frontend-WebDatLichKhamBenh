@@ -7,19 +7,23 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './BookingModal.scss';
 import * as actions from '../../../store/actions';
 import DatePicker from '../../../components/Input/DatePicker';
+// import { withRouter } from 'react-router-dom';
 class BookingModal extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            fullName: '',
-            phonenumber: '',
-            email: '',
+            name: '',
+            dob: '',
+            phoneNumber: '',
+            BHYT: '',
             address: '',
+            username: '',
+            time: '',
+            date: '',
             reason: '',
-            birthday: '',
-            genders: '',
-            selectedgender: '',
+            sex: '',
+            idDoctor: '',
         }
     }
     // buildDataGender = (data) => {
@@ -42,6 +46,20 @@ class BookingModal extends Component {
     componentDidMount() {
 
     }
+    handleButtonClick = () => {
+        const iddoctorFromURL = this.props.match.params.id;
+        this.setState({
+            iddoctor: iddoctorFromURL
+        });
+
+        // Gọi API hoặc thực hiện các tác vụ khác dựa trên iddoctorFromURL
+    }
+    handleGenderChange = event => {
+        const selectedSex = event.target.value;
+        this.setState({
+            sex: selectedSex
+        });
+    }
     handleOnChangeInput = (event, id) => {
         let valueInput = event.target.value;
         let stateCopy = { ...this.state };
@@ -52,12 +70,22 @@ class BookingModal extends Component {
     }
     handleOnCangeDatePcker = (date) => {
         this.setState({
-            birthday: date[0]
+            dob: date[0]
         })
     }
     render() {
+        const currentURL = window.location.href;
+        const segments = currentURL.split('/');
+        const id = segments[segments.length - 1];
+        if (this.state.idDoctor !== id) {
+            this.setState({
+                idDoctor: id
+            });
+        }
+        // console.log(id);
+
         let { isOpenModal, closeBookingModal, datatime } = this.props
-        console.log('check state: data ', this.state)
+        console.log('check state', this.state)
         return (
             <Modal
                 isOpen={isOpenModal}
@@ -93,20 +121,20 @@ class BookingModal extends Component {
                             <div className="col-6 input-container">
                                 <label>Họ Tên</label>
                                 <input className="from-control"
-                                    value={this.state.fullName}
-                                    onChange={(event) => this.handleOnChangeInput(event, 'fullName')} />
+                                    value={this.state.name}
+                                    onChange={(event) => this.handleOnChangeInput(event, 'name')} />
                             </div>
                             <div className="col-6 input-container">
                                 <label>Số điện thoai</label>
                                 <input className="from-control"
-                                    value={this.state.phonenumber}
-                                    onChange={(event) => this.handleOnChangeInput(event, 'phonenumber')} />
+                                    value={this.state.phoneNumber}
+                                    onChange={(event) => this.handleOnChangeInput(event, 'phoneNumber')} />
                             </div>
                             <div className="col-6 input-container">
                                 <label>Địa chỉ email</label>
                                 <input className="from-control"
-                                    value={this.state.email}
-                                    onChange={(event) => this.handleOnChangeInput(event, 'email')} />
+                                    value={this.state.username}
+                                    onChange={(event) => this.handleOnChangeInput(event, 'username')} />
                             </div>
                             <div className="col-6 input-container">
                                 <label>Địa chỉ liên hệ</label>
@@ -123,7 +151,7 @@ class BookingModal extends Component {
                             <div className="col-6 input-container">
                                 <label>Ngày sinh</label>
                                 <DatePicker className="from-control"
-                                    value={this.state.birthday}
+                                    value={this.state.dob}
                                     onChange={this.handleOnCangeDatePcker}
                                 />
                             </div>
@@ -131,9 +159,11 @@ class BookingModal extends Component {
                                 <label className="a">
                                     Giới tính
                                 </label>
-                                <select name="Gioi-tinh" >
-                                    <option value="Nam">Nam</option>
-                                    <option value="Nu">Nữ</option>
+                                <select name="sex" value={this.state.sex} onChange={this.handleGenderChange} >
+                                    <option value="">Chọn</option>
+
+                                    <option value="nam">Nam</option>
+                                    <option value="nữ">Nữ</option>
                                 </select>
                             </div>
                         </div>
