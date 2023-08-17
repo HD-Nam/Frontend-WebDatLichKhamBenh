@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from "react-slick"
 import { getAllDoctor } from '../../../api/getAllDoctor';
+import { Link } from 'react-router-dom';
 
 class OutStandingDoctor extends Component {
 
@@ -46,7 +47,7 @@ class OutStandingDoctor extends Component {
                                             <div className="bg-image section-outstanding-doctor" style={{ backgroundImage: `url(${item.img})` }} />
                                         </div>
                                         <div className="position text-center">
-                                            <div>{item.ho_ten}</div>
+                                            <div><Link to={`/detail-doctor/${item.IDU}`} style={{ color: "black", textDecoration: "none" }}>{item.ho_ten}</Link></div>
                                             <div>{item.specialist.name}</div>
                                         </div>
                                     </div>

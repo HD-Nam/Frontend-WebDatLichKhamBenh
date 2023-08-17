@@ -76,15 +76,25 @@ class ListDoctor extends Component {
     }
     handleSearchInputChange = (event) => {
         const searchQuery = event.target.value;
-        console.log('searchQuery: ', searchQuery);
+        clearTimeout(this.typingTimer);
+
+
+        // console.log('searchQuery: ', searchQuery);
         this.setState({ searchQuery: searchQuery });
-        if (searchQuery === '') {
-            // Gọi hàm khác khi ô input trống
-            this.fetchDoctorData();
-        } else {
-            // Gọi API để tìm kiếm dựa trên searchQuery
-            this.findDoctor(searchQuery);
-        }
+        this.typingTimer = setTimeout(() => {
+            // this.findDoctor(searchQuery); // Gọi hàm fetchDoctors thay vì findDoctor
+            if (searchQuery === '') {
+                // Gọi hàm khác khi ô input trống
+                setTimeout(() => {
+                    this.findDoctor();
+                }, 10);
+                // this.fetchDoctorData();
+            } else {
+                // Gọi API để tìm kiếm dựa trên searchQuery
+                this.findDoctor(searchQuery);
+            }
+        }, 500);
+
         // this.findDoctor(searchQuery);
         // Gọi API để tìm kiếm dựa trên searchQuery
         // this.findDoctor(searchQuery);
@@ -107,7 +117,7 @@ class ListDoctor extends Component {
                 // this.filterDoctors(this.state.searchQuery);
             })
             .catch(error => {
-                toast.error('Không tìm thấy bác sĩ nào');
+                toast.error('Có lỗi sảy ra');
                 this.fetchDoctorData();
 
                 console.log(error);
@@ -218,8 +228,8 @@ class ListDoctor extends Component {
                                     </div>
                                     <div className="doctor-extra-infor-container">
                                         <div className="content-up">
-                                            {/* <div className="text-address">{`${item.work_room} - ${item.specialist.address}`}</div> */}
-                                            {/* <div className="name-clinic"> {item.specialist.name}</div>
+                                            {/* <div className="text-address">{`${item.work_room} - ${item.specialist.address}`}</div>
+                                            <div className="name-clinic"> {item.specialist.name}</div>
                                             <div className="phone-number">{`Liên hệ: ${item.specialist.phoneNumber}`}</div> */}
                                         </div>
                                         <div className="content-down">
