@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { emitter } from "../../utils/emitter";
 import register from '../../api/register';
-import _ from 'lodash';
+import _, { update } from 'lodash';
+import updateUser from '../../api/updateUser';
 
 class ModalEditUser extends Component {
 
@@ -24,19 +25,22 @@ class ModalEditUser extends Component {
 
     componentDidMount() {
         let user = this.props.currentUser;
+
+        console.log("props", this.props.currentUser);
+
         if (user && !_.isEmpty(user)) {
             this.setState({
-                name: user.name,
-                dob: user.dob,
-                sex: user.sex,
-                phoneNumber: user.phoneNumber,
-                BHYT: user.BHYT,
-                address: user.address,
+                name: user.ho_ten,
+                dob: user.ntns,
+                sex: user.gioi_tinh,
+                phoneNumber: user.sdt,
+                BHYT: user.so_BHYT,
+                address: user.dia_chi,
                 username: user.username,
-                password: "hardcode",
+                password: '',
             })
         }
-        
+
     }
 
     toggle = () => {
@@ -64,10 +68,12 @@ class ModalEditUser extends Component {
         return isValid;
     }
 
-    handleSaveUser = () => {
+    handleSaveUser = async () => {
         let isValid = this.checkValidateInput();
         if (isValid === true) {
-            this.props.editUser(this.state);
+            console.log(this.state);
+            console.log(this.props.currentUser.IDU);
+            await updateUser(this.state, this.props.currentUser.IDU);
         }
     }
 
@@ -136,7 +142,7 @@ class ModalEditUser extends Component {
                                 type="text"
                                 onChange={(event) => { this.handleOnChageInput(event, "username") }}
                                 value={this.state.username}
-                                disabled
+
                             />
                         </div>
                         <div className="input-container">
@@ -145,7 +151,7 @@ class ModalEditUser extends Component {
                                 type="text"
                                 onChange={(event) => { this.handleOnChageInput(event, "password") }}
                                 value={this.state.password}
-                                disabled
+
                             />
                         </div>
                     </div>

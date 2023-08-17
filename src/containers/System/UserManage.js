@@ -164,7 +164,7 @@ class UserManage extends Component {
                             isOpen={this.state.isOpenModalEditUser}
                             toggleFromParent={this.toggleUserEditModal}
                             currentUser={this.state.userEdit}
-                            editUser={this.doEditUser}
+                        // editUser={this.doEditUser}
                         />
                     }
                     <div className="title text-center">Manage users</div>
