@@ -7,11 +7,9 @@ import { ToastContainer } from 'react-toastify';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
 import { path } from '../utils'
 import Login from './Auth/Login';
-<<<<<<< HEAD
-import Home from '../routes/Home';
-=======
 
->>>>>>> 834eeda42346b6a8f44ff3bba3e5ae65657bb71c
+import Home from '../routes/Home';
+
 import Register from './Auth/Register';
 import ForgotPassword from './Auth/ForgotPassword';
 import HomeHeader from './HomePage/HomeHeader';

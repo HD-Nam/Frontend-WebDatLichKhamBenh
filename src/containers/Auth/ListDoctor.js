@@ -12,13 +12,15 @@ import { FormattedMessage } from 'react-intl';
 // import { userService } from '../../services/userService';import Select from 'react-select'
 import { getAllDoctor } from '../../api/getAllDoctor';
 import { Link } from 'react-router-dom';
+import { findDoctor } from '../../api/findDoctor';
+import { find, set } from 'lodash';
+import { toast } from 'react-toastify';
 
 
 class ListDoctor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // arrDoctorId: [45, 46]
             alldays: [],
             data: [],
             allAvailableTime: [],
@@ -54,11 +56,14 @@ class ListDoctor extends Component {
         })
 
 
+        this.fetchDoctorData();
+    }
+    fetchDoctorData = () => {
         getAllDoctor()
             .then(data => {
                 this.setState({ data: data });
-                console.log('data: ', data);
-
+                // Sau khi lấy dữ liệu từ API, bạn cũng có thể gọi hàm filterDoctors để lọc dữ liệu ban đầu
+                // this.filterDoctors(this.state.searchQuery);
             })
             .catch(error => {
                 console.log(error);
@@ -69,6 +74,46 @@ class ListDoctor extends Component {
             this.props.history.push('/home')
         }
     }
+    handleSearchInputChange = (event) => {
+        const searchQuery = event.target.value;
+        console.log('searchQuery: ', searchQuery);
+        this.setState({ searchQuery: searchQuery });
+        if (searchQuery === '') {
+            // Gọi hàm khác khi ô input trống
+            this.fetchDoctorData();
+        } else {
+            // Gọi API để tìm kiếm dựa trên searchQuery
+            this.findDoctor(searchQuery);
+        }
+        // this.findDoctor(searchQuery);
+        // Gọi API để tìm kiếm dựa trên searchQuery
+        // this.findDoctor(searchQuery);
+    }
+    findDoctor = async (searchQuery) => {
+        findDoctor(searchQuery)
+            .then(data => {
+                console.log('data: ', data);
+                if (data.length === 0) {
+                    toast.error('Không tìm thấy bác sĩ nào');
+
+                    this.fetchDoctorData();
+                }
+                else {
+
+
+                    this.setState({ data: data });
+                }
+                // Sau khi lấy dữ liệu từ API, bạn cũng có thể gọi hàm filterDoctors để lọc dữ liệu ban đầu
+                // this.filterDoctors(this.state.searchQuery);
+            })
+            .catch(error => {
+                toast.error('Không tìm thấy bác sĩ nào');
+                this.fetchDoctorData();
+
+                console.log(error);
+            });
+    }
+
     handleOnChangeSelect = (event) => {
         // if (this.props.match && this.props.match.params && this.props.match.params.id) {
         //     let doctorId = this.props.match.params.id;
@@ -111,7 +156,7 @@ class ListDoctor extends Component {
                 </div>
                 <div className="search">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Tìm Bác sĩ khám bệnh" />
+                    <input type="text" onChange={this.handleSearchInputChange} placeholder="Tìm Bác sĩ khám bệnh" />
                 </div>
                 {data.map((item, index) => (
                     <div className="detail-specialty-doctor" key={index}>
@@ -173,9 +218,9 @@ class ListDoctor extends Component {
                                     </div>
                                     <div className="doctor-extra-infor-container">
                                         <div className="content-up">
-                                            <div className="text-address">{`${item.work_room} - ${item.specialist.address}`}</div>
-                                            <div className="name-clinic"> {item.specialist.name}</div>
-                                            <div className="phone-number">{`Liên hệ: ${item.specialist.phoneNumber}`}</div>
+                                            {/* <div className="text-address">{`${item.work_room} - ${item.specialist.address}`}</div> */}
+                                            {/* <div className="name-clinic"> {item.specialist.name}</div>
+                                            <div className="phone-number">{`Liên hệ: ${item.specialist.phoneNumber}`}</div> */}
                                         </div>
                                         <div className="content-down">
                                             <div>GIÁ KHÁM: 250.000 VNĐ</div>

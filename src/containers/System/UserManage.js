@@ -33,8 +33,7 @@ class UserManage extends Component {
 
     }
 
-<<<<<<< HEAD
-=======
+
     updateUserList = async () => {
         try {
             // this.setState({ arrUsers: [] });
@@ -46,7 +45,7 @@ class UserManage extends Component {
         }
     }
 
->>>>>>> 834eeda42346b6a8f44ff3bba3e5ae65657bb71c
+
     handleAddNewUser = () => {
         this.setState({
             isOpenModalUser: true,
@@ -109,10 +108,10 @@ class UserManage extends Component {
                     isOpenModalEditUser: false
                 })
                 await this.getAllUsersFromReact()
-            }else {
+            } else {
                 alert(res.errCode)
             }
-        } catch(e) {
+        } catch (e) {
             console.log(e)
         }
     }
