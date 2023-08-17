@@ -11,7 +11,7 @@ class HomeHeader extends Component {
                 <div className="home-header-container">
                     <div className="home-header-content">
                         <div className="left-content">
-                            <div className="logo"><i className="far fa-hospital"></i>  <Link to="/" style={{ color: "black", textDecoration: "none" }}>BỆNH VIỆN A</Link>
+                            <div className="logo"><i className="far fa-hospital"></i>  <Link to="/home" style={{ color: "black", textDecoration: "none" }}>BỆNH VIỆN A</Link>
 
                             </div>
                         </div>
