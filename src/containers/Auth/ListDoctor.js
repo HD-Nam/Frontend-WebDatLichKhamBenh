@@ -214,12 +214,12 @@ class ListDoctor extends Component {
                                                 <button>13:00 - 14:00</button>
                                                 <button>14:00 - 15:00</button>
                                             </div>
-                                            {/* {allAvailableTime && allAvailableTime.length > 0 &&
-                                        allAvailableTime.map((item, index) => {
-                                            return (
-                                                <button key={index}>{ }</button>
-                                            )
-                                        })} */}
+                                            {allAvailableTime && allAvailableTime.length > 0 &&
+                                                allAvailableTime.map((item, index) => {
+                                                    return (
+                                                        <button key={index}>{ }</button>
+                                                    )
+                                                })}
 
                                             <div className="book-free">
                                                 <span>Chọn <i className="far fa-hand-point-up"></i> và đặt miễn phí</span>
@@ -228,9 +228,9 @@ class ListDoctor extends Component {
                                     </div>
                                     <div className="doctor-extra-infor-container">
                                         <div className="content-up">
-                                            {/* <div className="text-address">{`${item.work_room} - ${item.specialist.address}`}</div>
+                                            <div className="text-address">{`${item.work_room} - ${item.specialist.address}`}</div>
                                             <div className="name-clinic"> {item.specialist.name}</div>
-                                            <div className="phone-number">{`Liên hệ: ${item.specialist.phoneNumber}`}</div> */}
+                                            <div className="phone-number">{`Liên hệ: ${item.specialist.phoneNumber}`}</div>
                                         </div>
                                         <div className="content-down">
                                             <div>GIÁ KHÁM: 250.000 VNĐ</div>
