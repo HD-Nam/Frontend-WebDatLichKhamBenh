@@ -7,6 +7,9 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './BookingModal.scss';
 import * as actions from '../../../store/actions';
 import DatePicker from '../../../components/Input/DatePicker';
+import moment from 'moment';
+import booking from '../../../api/bookingAppointment';
+import Cookies from 'js-cookie';
 // import { withRouter } from 'react-router-dom';
 class BookingModal extends Component {
 
@@ -16,7 +19,7 @@ class BookingModal extends Component {
             name: '',
             dob: '',
             phoneNumber: '',
-            BHYT: '',
+            // BHYT: '',
             address: '',
             username: '',
             time: '',
@@ -46,6 +49,18 @@ class BookingModal extends Component {
     componentDidMount() {
 
     }
+    componentDidUpdate(prevProps) {
+        if (this.props.time !== prevProps.time) {
+            this.setState({
+                time: this.props.time
+            });
+        }
+        if (this.props.date !== prevProps.date) {
+            this.setState({
+                date: this.props.date
+            });
+        }
+    }
     handleButtonClick = () => {
         const iddoctorFromURL = this.props.match.params.id;
         this.setState({
@@ -60,6 +75,11 @@ class BookingModal extends Component {
             sex: selectedSex
         });
     }
+    handleSubmmit = () => {
+        const data = this.state;
+        booking(data, Cookies.get('userId'))
+
+    }
     handleOnChangeInput = (event, id) => {
         let valueInput = event.target.value;
         let stateCopy = { ...this.state };
@@ -69,9 +89,12 @@ class BookingModal extends Component {
         })
     }
     handleOnCangeDatePcker = (date) => {
+
+        const formattedDate = moment(date[0]).format('YYYY-MM-DD');
+        console.log('ngay sinh', formattedDate);
         this.setState({
-            dob: date[0]
-        })
+            dob: formattedDate
+        });
     }
     render() {
         const currentURL = window.location.href;
@@ -84,8 +107,8 @@ class BookingModal extends Component {
         }
         // console.log(id);
 
-        let { isOpenModal, closeBookingModal, datatime } = this.props
-        console.log('check state', this.state)
+        let { isOpenModal, closeBookingModal } = this.props
+        console.log('check state', this.state, closeBookingModal)
         return (
             <Modal
                 isOpen={isOpenModal}
@@ -153,6 +176,7 @@ class BookingModal extends Component {
                                 <DatePicker className="from-control"
                                     value={this.state.dob}
                                     onChange={this.handleOnCangeDatePcker}
+                                    dateFormat="yyyy-MM-dd"
                                 />
                             </div>
                             <div>
@@ -169,7 +193,8 @@ class BookingModal extends Component {
                         </div>
                     </ModalBody>
                     <ModalFooter className="booking-modal-footer">
-                        <button className="xacnhan" onClick={closeBookingModal}>Xác Nhận </button>
+                        <button className="xacnhan" onClick={this.handleSubmmit}>Xác Nhận </button>
+                        {/* <button className="xacnhan" onClick={closeBookingModal}>Xác Nhận </button> */}
                         <button className="cancel" onClick={closeBookingModal}>Cancel</button>
                     </ModalFooter>
                 </div>
